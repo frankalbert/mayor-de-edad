@@ -32,17 +32,21 @@
     <script>
 
         function comprobarFormulario(){
-            const annoIntroducido = document.getElementById('anno').value;
-            const mesIntroducido = document.getElementById('mes').value-1;
-            const diaIntroducido = document.getElementById('dia').value;
+            const annoIntroducido = Number(document.getElementById('anno').value);
+            const mesIntroducido = Number(document.getElementById('mes').value);
+            const diaIntroducido = Number(document.getElementById('dia').value);
 
             const fechaIntroducida = new Date(annoIntroducido+'-'+mesIntroducido+'-'+diaIntroducido);
 
             const fechaActual = new Date();
-            const diffFecha = new Date(fechaActual.getFullYear() - 18+'-'+fechaActual.getMonth()+'-'+fechaActual.getDate());
+            const diffMes = fechaActual.getMonth()+1; //  Esta constante diffMes es para poder sumarle 1 al valor de la posición del mes, pq este es un array y empieza en 0
+            const diffFecha = new Date(fechaActual.getFullYear() - 18+'-'+diffMes+'-'+fechaActual.getDate());
 
-            console.log(diffFecha);
+            console.log('Fecha introducida: ' + annoIntroducido+'-'+mesIntroducido+'-'+diaIntroducido);
             console.log(fechaIntroducida);
+            console.log(fechaActual.getMonth());
+            console.log(fechaActual);
+            console.log(diffFecha);
 
             if(diffFecha.getTime() >= fechaIntroducida.getTime()){
                 alert('Es mayor de 18 años')
