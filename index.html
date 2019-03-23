@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calcular si es mayor de edad</title>
+
+    <style>
+        form *{
+            display: block;
+        }
+
+        form input{
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vamos a calcular si una persona es mayor de edad</h1>
+
+    <form action="" id="formulario">
+        <label for="dia">D&iacute;a</label>
+        <input type="text" placeholder="Introduzca el día" id="dia" value="22" />
+        <label for="mes">Mes</label>
+        <input type="text" placeholder="Introduzca el mes" id="mes" value="03" />
+        <label for="anno">Año</label>
+        <input type="text" placeholder="Introduzca el año" id="anno" value="2001" />
+        <input type="button" id="enviar" value="Enviar" onclick="comprobarFormulario()" />
+    </form>
+
+    <script>
+
+        function comprobarFormulario(){
+            const annoIntroducido = document.getElementById('anno').value;
+            const mesIntroducido = document.getElementById('mes').value-1;
+            const diaIntroducido = document.getElementById('dia').value;
+
+            const fechaIntroducida = new Date(annoIntroducido+'-'+mesIntroducido+'-'+diaIntroducido);
+
+            const fechaActual = new Date();
+            const diffFecha = new Date(fechaActual.getFullYear() - 18+'-'+fechaActual.getMonth()+'-'+fechaActual.getDate());
+
+            console.log(diffFecha);
+            console.log(fechaIntroducida);
+
+            if(diffFecha.getTime() >= fechaIntroducida.getTime()){
+                alert('Es mayor de 18 años')
+            }else{
+                alert('Lo sentimos, es menor de 18 años');
+            }
+
+        }
+        
+    </script>
+</body>
+</html>
